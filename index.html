@@ -71,15 +71,72 @@
             z-index: 2;
         }
 
+        .text-focus-in {
+	        -webkit-animation: text-focus-in 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 1.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        }
+        @-webkit-keyframes text-focus-in {
+        0% {
+            -webkit-filter: blur(12px);
+                    filter: blur(12px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-filter: blur(0px);
+                    filter: blur(0px);
+            opacity: 1;
+        }
+        }
+        @keyframes text-focus-in {
+        0% {
+            -webkit-filter: blur(12px);
+                    filter: blur(12px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-filter: blur(0px);
+                    filter: blur(0px);
+            opacity: 1;
+        }
+        }
+
         .index_bannerTitle img {
             width: 100%;
         }
 
+        .index_bannerTitle_info{
+            margin: 50px 0 0 0;
+            max-width: 350px;
+        }
         .index_bannerTitle p {
             color: #fff;
             letter-spacing: 0.1rem;
-            max-width: 350px;
-            margin: 50px 0 0 0;
+            
+            margin: 0px 0 0 0;
+            display: inline-block;
+        }
+
+/* banner的文字段落動畫 */
+        .index_bannerTitle_info01{
+            animation: slide-in-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
+        }
+        .index_bannerTitle_info02{
+            animation: slide-in-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.1s both;
+        }
+        .index_bannerTitle_info03{
+            animation: slide-in-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.4s both;
+        }
+        @keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(100px);
+                    transform: translateY(100px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+            opacity: 1;
+        }
         }
 
         .index_storyBox {
@@ -122,7 +179,7 @@
 
         }
 
-        /* slide-dots */
+/* slide-dots */
         .slider_dots {
             position: absolute;
             list-style-type: none;
@@ -136,8 +193,6 @@
             justify-content: center;
 
             z-index: 2;
-
-            /* border: 1px solid red; */
         }
 
         .slider_dots li {
@@ -146,8 +201,6 @@
             margin: 8px 50px;
             background-color: #fff;
             opacity: .5;
-
-            /* border: 1px solid red; */
         }
 
         .index_banner .slider_num {
@@ -157,10 +210,9 @@
             font-size: 18px;
             opacity: 1 !important;
             letter-spacing: 0.2rem;
-            /* border: 1px solid red; */
         }
 
-        /* slideDown-arrow */
+/* slideDown-arrow */
         .index_slideDown {
             position: absolute;
             z-index: 2;
@@ -283,9 +335,20 @@
             position: sticky;
             top: 0px;
             z-index: 99;
-
-            /* border: 1px solid red; */
+            opacity: 0;
         }
+        @keyframes focus-in-expand {
+        0% {
+            letter-spacing: -0.5em;
+                    filter: blur(12px);
+            opacity: 0;
+        }
+        100%{
+            filter: blur(0px);
+            opacity: 1;
+        }
+        }
+
 
         .nav_index_navbarBox {
             width: 75%;
@@ -324,12 +387,14 @@
             bottom: 0;
             transition: .5s;
 
+            
+
             /* border: 1px solid red; */
         }
 
         .nav_index_navbarBox li:hover {
             color: #cc543a;
-            bottom: 10px;
+            /* bottom: 10px; */
         }
 
         .nav_index_navbar_left li {
@@ -1383,9 +1448,12 @@
         </ul>
 
         <div class="index_bannerTitle">
-            <img src="./img/index_bannerTitle.png" alt="">
-            <p>或許，對於長年在台灣生活的我們，寺廟對我們太平常了，大部分人都不會注意到寺廟內精緻的藝術，然而寺廟建築絕對是在地歷史與文化的象徵。先民渡海來台，帶來了傳統文化習俗，同時也播下了信仰的種子，逐漸發芽、進而開花與結果。
-            </p>
+            <img src="./img/index_bannerTitle.png" alt="" class="text-focus-in">
+            <div class="index_bannerTitle_info">
+                <p class="index_bannerTitle_info01">或許，對於長年在台灣生活的我們，寺廟對我們太平常了，大部分人都不會注意到寺廟</p>
+                <p class="index_bannerTitle_info02">內精緻的藝術，然而寺廟建築絕對是在地歷史與文化的象徵。先民渡海來台，帶來了傳</p>
+                <p class="index_bannerTitle_info03">統文化習俗，同時也播下了信仰的種子，逐漸發芽、進而開花與結果。</p>
+            </div>
         </div>
 
         <div class="index_storyBox d-flex justify-content-end align-items-center">
@@ -3014,11 +3082,7 @@
     <script>
         //banner-carousel
 
-
-
-
         let slideImg = $('.index_bannerBox').find('img');
-        let slideImgCount = slideImg.length;
         let currentIndex = 0;
 
         slideImg.eq(currentIndex).fadeIn();
@@ -3191,6 +3255,19 @@
             } else {
                 $(".index_goTopImg").removeClass('show');
             }
+
+            //navBar進入動畫
+            if (scrollTop >= 250 && $(window).width() > 1400 ) {
+
+                let navAnimation = {
+                    'animation': 'focus-in-expand 1.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                    'opacity': '1'
+                }
+
+                $(".nav_index_navbar_com").css(navAnimation);
+            } 
+
+
         });
 
         $('.index_goTopImg').click(function () {
