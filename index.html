@@ -22,7 +22,24 @@
             cursor: url('./img/cursor.png') 15 15, auto;
         }
 
-        /* banner */
+/*scroll-bar*/
+        body::-webkit-scrollbar {
+        width: 5px;
+        }
+        body::-webkit-scrollbar-button{
+        background: #f5f4f1;
+        display: none;
+        }
+        body::-webkit-scrollbar-track-piece{
+        background: #f5f4f1;
+        }
+        
+        body::-webkit-scrollbar-thumb {
+        background-color: #cc543a;
+        border-radius: 10px;
+        }
+
+/* banner */
         .index_banner {
             max-width: 1920px;
             height: 100vh;
@@ -410,17 +427,50 @@
             text-decoration: none;
         }
 
+        .nav_hide_ch{
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            visibility: inherit;
+            transform: translate(0px, 0px)
+        }
+
         .nav_hide_en {
-            display: none;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(0%, 50%) rotateX(90deg)
         }
 
         .nav_navbar_item:hover .nav_hide_ch {
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            visibility: inherit;
+            transform: translate(0px, 0px)
+        }
+
+        .nav_navbar_item:hover .nav_hide_en {
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            visibility: inherit;
+            transform: translate(0px, 0px)
+        }
+
+        
+
+
+
+
+        /* .nav_navbar_item:hover .nav_hide_ch {
             display: none;
         }
 
         .nav_navbar_item:hover .nav_hide_en {
             display: block;
-        }
+        } */
 
 
         /* login */
