@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
         rel="stylesheet">
+
+    <!-- navbar2 -->
+    <link rel="stylesheet" href="./css/navbar2.css">
         
     <title>灣廟 | NEWS</title>
 
@@ -26,219 +29,6 @@
         }
         p{
             margin: 0;
-        }
-
-/* burgurBar */
-        .nav_burgurBar{
-            background-image: url(./img/nav_bcc.png);
-            position: sticky;
-            top: 0;
-            display: none;
-            z-index: 9;
-            padding: 20px 0;
-
-            border-bottom: 1px solid rgba(203, 203, 203, .5);
-        }
-        .nav_burgurBar_img {
-            margin: 0 20px;
-        }
-
-        .nav_logo_mobile{
-            margin: 0 10px;
-        }
-
-
-/* overlayNav */
-        .nav_overlayNav {
-            background-color: rgba(0, 0, 0, 0.9);
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 99;
-            /* display: none; */
-            transition: .7s;
-
-            transform: translateY(-2500px);
-        }
-
-        .nav_overlayNavBox {
-            text-align: center;
-        }
-
-        .nav_overlayNavBox li {
-            font-family: 'Noto Serif TC', serif;
-            color: #fff;
-            letter-spacing: 0.2rem;
-            padding: 25px 0;
-        }
-
-
-
-
-/* navbar */
-        .nav_navbar_com {
-            width: 100%;
-            background-image: url(./img/nav_barBcc.jpg);
-
-            position: sticky;
-            top: 0;
-            z-index: 99;
-        }
-
-        .nav_navbar_com_container {
-            width: 90%;
-            display: flex;
-            margin: 10px auto;
-            padding: 0;
-        }
-
-        .nav_navbar {
-            width: 94%;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav_navbarBox {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .nav_nav_left {
-            width: 70%;
-            display: flex;
-            justify-content: space-between;
-            list-style-type: none;
-            margin: 0px;
-        }
-
-        .nav_nav_right {
-            display: flex;
-            justify-content: flex-end;
-            list-style-type: none;
-            margin: 0;
-        }
-
-        .nav_navbarBox li {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 16px;
-            color: #000;
-            letter-spacing: 0.2rem;
-            position: relative;
-            bottom: 0;
-            transition: .5s;
-        }
-
-        .nav_navbarBox li:hover {
-            color: #cc543a;
-            bottom: 10px;
-        }
-
-        .nav_nav_left li{
-            width: 77px;
-        }
-
-        .nav_navbarBox span {
-            padding: 0 10px;
-        }
-
-        .nav_navbarBox a,
-        .nav_overlayNavBox a {
-            text-decoration: none;
-        }
-
-        .nav_navline {
-            width: 80%;
-            height: 1px;
-            background-color: rgba(203, 203, 203, .7);
-            border: 0;
-            margin: 0 auto;
-        }
-
-        nav img {
-            width: 85px;
-        }
-
-        .nav_hide_en {
-            display: none;
-        }
-
-        .nav_navbar_item:hover .nav_hide_ch {
-            display: none;
-        }
-
-        .nav_navbar_item:hover .nav_hide_en {
-            display: block;
-        }
-
-
-
-
-/* login */
-        .modal-content-re {
-            background-image: url(./img/nav_bcc2.png);
-            border: 0;
-            border-radius: 20px;
-            padding: 30px;
-        }
-
-        .modal-header-re {
-            border-bottom: 0px;
-            display: block;
-            text-align: center;
-        }
-
-        .modal-footer-re {
-            border-top: 0px;
-            margin: 0 auto;
-        }
-
-        .modal-footer2-re {
-            margin: 0 auto;
-            font-size: 14px;
-            color: #000;
-        }
-
-        .modal-footer2-re a {
-            color: #000;
-        }
-
-        .form-control-re {
-            background-image: url(./img/nav_bcc.png);
-            border-radius: 0%;
-            border: 1px solid #cdcdcd;
-        }
-
-        .form-control-re:focus {
-            border-color: #cdcdcd;
-            box-shadow: none;
-            background-color: #f5f4f1;
-        }
-
-        .close:focus {
-            outline: none;
-        }
-
-        .btn-primary-re {
-            background-color: #cc543a;
-            border: 0;
-            border-radius: 33px;
-            padding: 5px 35px;
-        }
-
-        .btn-primary-re:hover {
-            background-color: #dd745e;
-        }
-
-        .btn-primary-re:active {
-            background-color: #dd745e;
-        }
-
-        .btn-primary-re:focus {
-            background-color: #dd745e;
         }
 
 /* 麵包屑 */
@@ -289,7 +79,7 @@
         .newsDetail_container{
             display: flex;
             width: 80%;
-            margin: 20px auto 0 auto;
+            margin: 40px auto 0 auto;
         }
 
         .newsDetail_pageTitle {
@@ -459,11 +249,16 @@
                 <a href="">
                     <li>探索灣廟</li>
                 </a>
+                <li class="nav_ser_mobile">
+                    線上服務
+                    <i class="fas fa-angle-down"></i>
+                </li>
+                <ul class="nav_dropDownMenu_mobile">
+                    <a class="dropdown-item nav_ser_item_mob" href="#">祈福點燈</a>
+                    <a class="dropdown-item nav_ser_item_mob" href="#">求神問卜</a>
+                </ul>
                 <a href="">
-                    <li>線上服務</li>
-                </a>
-                <a href="">
-                    <li>聖地巡禮</li>
+                    <li>聖地行旅</li>
                 </a>
                 <a href="">
                     <li>祈福商店</li>
@@ -486,41 +281,47 @@
 
             <div class="nav_navbar">
                 <div class="nav_navbarBox">
-                    <ul class="nav_nav_left">
+                    <div class="nav_nav_left">
                         <a href="" class="nav_navbar_item">
-                            <li class="nav_hide_ch">最新消息</li>
-                            <li class="nav_hide_en">NEWS</li>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <li class="nav_hide_ch">探索灣廟</li>
-                            <li class="nav_hide_en">EXPLORE</li>
+                            <div class="nav_hide_ch">最新消息</div>
+                            <div class="nav_hide_en">NEWS</div>
                         </a>
                         <a href="" class="nav_navbar_item">
-                            <li class="nav_hide_ch">線上服務</li>
-                            <li class="nav_hide_en">SERVICE</li>
+                            <div class="nav_hide_ch">探索灣廟</div>
+                            <div class="nav_hide_en">EXPLORE</div>
+                        </a>
+                        <a href="#" class="nav_navbar_item nav_ser">
+                            <div class="nav_hide_ch">線上服務</div>
+                            <div class="nav_hide_en">SERVICE</div>
+        
+                            <ul class="nav_dropDownMenu">
+                                <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
+                                <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
+                            </ul>
+                        </a>
+                        
+                        <a href="" class="nav_navbar_item">
+                            <div class="nav_hide_ch">聖地行旅</div>
+                            <div class="nav_hide_en">TRIP</div>
                         </a>
                         <a href="" class="nav_navbar_item">
-                            <li class="nav_hide_ch">聖地行旅</li>
-                            <li class="nav_hide_en">TRIP</li>
+                            <div class="nav_hide_ch">祈福商店</div>
+                            <div class="nav_hide_en">SHOP</div>
                         </a>
                         <a href="" class="nav_navbar_item">
-                            <li class="nav_hide_ch">祈福商店</li>
-                            <li class="nav_hide_en">SHOP</li>
+                            <div class="nav_hide_ch">購物車</div>
+                            <div class="nav_hide_en">CART</div>
                         </a>
-                        <a href="" class="nav_navbar_item">
-                            <li class="nav_hide_ch">購物車</li>
-                            <li class="nav_hide_en">CART</li>
+                    </div>
+                    <div class="nav_nav_right">
+                        <a href="" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item">
+                            <div>登入</div>
                         </a>
-                    </ul>
-                    <ul class="nav_nav_right">
-                        <a href="" data-toggle="modal" data-target="#loginCenter">
-                            <li>登入</li>
+                        <span class="nav_navbar_item">|</span>
+                        <a href="" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item">
+                            <div>註冊</div>
                         </a>
-                        <span>|</span>
-                        <a href="" data-toggle="modal" data-target="#registerCenter">
-                            <li>註冊</li>
-                        </a>
-                    </ul>
+                    </div>
                 </div>
             </div>
 
@@ -760,6 +561,15 @@
 
         $('#passwordbtn').click(function () {
             $('#loginCenter').modal('hide');
+        });
+
+        //overlay sub-menu
+        $(document).ready(function () {
+            $('.nav_ser_mobile').click(function () {
+
+                $('.nav_dropDownMenu_mobile').toggle('slow');
+
+            })
         });
 
 
