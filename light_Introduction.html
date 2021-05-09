@@ -6,13 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>燈種介紹</title>
-    <!-- 重置 -->
+    <!-- reset -->
     <link rel="stylesheet" href="./css/reset.css">
-    <!-- bootstrap 4.6.0 -->
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <!-- 動畫 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- 小圖示 -->
     <script src="https://kit.fontawesome.com/271f30e909.js" crossorigin="anonymous"></script>
     <!-- 文字 -->
@@ -25,7 +23,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="./css/sample_body.css">
-    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/navbar1.css">
 
     <style>
         /* 共用設定 */
@@ -584,46 +582,47 @@
 
     <div class="nav_index_navbar_com">
         <div class="nav_index_navbarBox">
-            <ul class="nav_index_navbar_left">
+            <div class="nav_index_navbar_left">
                 <a href="" class="nav_navbar_item">
-                    <li class="nav_hide_ch">最新消息</li>
-                    <li class="nav_hide_en">NEWS</li>
+                    <div class="nav_hide_ch">最新消息</div>
+                    <div class="nav_hide_en">NEWS</div>
                 </a>
                 <a href="" class="nav_navbar_item">
-                    <li class="nav_hide_ch">探索灣廟</li>
-                    <li class="nav_hide_en">EXPLORE</li>
+                    <div class="nav_hide_ch">探索灣廟</div>
+                    <div class="nav_hide_en">EXPLORE</div>
                 </a>
-                <a href="" class="nav_navbar_item nav_ser">
-                    <li class="nav_hide_ch">線上服務</li>
-                    <li class="nav_hide_en">SERVICE</li>
+                <a href="#" class="nav_navbar_item nav_ser">
+                    <div class="nav_hide_ch">線上服務</div>
+                    <div class="nav_hide_en">SERVICE</div>
 
                     <ul class="nav_dropDownMenu">
                         <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
                         <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
                     </ul>
                 </a>
+                
                 <a href="" class="nav_navbar_item">
-                    <li class="nav_hide_ch">聖地行旅</li>
-                    <li class="nav_hide_en">TRIP</li>
+                    <div class="nav_hide_ch">聖地行旅</div>
+                    <div class="nav_hide_en">TRIP</div>
                 </a>
                 <a href="" class="nav_navbar_item">
-                    <li class="nav_hide_ch">祈福商店</li>
-                    <li class="nav_hide_en">SHOP</li>
+                    <div class="nav_hide_ch">祈福商店</div>
+                    <div class="nav_hide_en">SHOP</div>
                 </a>
                 <a href="" class="nav_navbar_item">
-                    <li class="nav_hide_ch">購物車</li>
-                    <li class="nav_hide_en">CART</li>
+                    <div class="nav_hide_ch">購物車</div>
+                    <div class="nav_hide_en">CART</div>
                 </a>
-            </ul>
-            <ul class="nav_index_navbar_right">
+            </div>
+            <div class="nav_index_navbar_right">
                 <a href="" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item">
-                    <li>登入</li>
+                    <div>登入</div>
                 </a>
                 <span class="nav_navbar_item">|</span>
                 <a href="" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item">
-                    <li>註冊</li>
+                    <div>註冊</div>
                 </a>
-            </ul>
+            </div>
         </div>
     </div>
 
@@ -1163,6 +1162,17 @@
                 $(".index_goTopImg").addClass('show');
             } else {
                 $(".index_goTopImg").removeClass('show');
+            }
+
+            //navBar進入動畫
+            if (scrollTop >= 250 && $(window).width() > 1400 ) {
+
+            let navAnimation = {
+                'animation': 'focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+                'opacity': '1'
+            }
+
+            $(".nav_index_navbar_com").css(navAnimation);
             }
         });
 

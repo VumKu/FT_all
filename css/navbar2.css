@@ -232,7 +232,7 @@ nav img {
 
 .nav_dropDownMenu{
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 36.5%;
     background-image: url(/img/nav_bcc2.png);
     border:1px solid #ddd;
