@@ -27,6 +27,7 @@
         body {
             font-family: 'Faustina', serif;
             background-image: url(./img/nav_bcc.png);
+            position: relative;
         }
         p{
             margin: 0;
@@ -108,16 +109,11 @@
         .checkList_subTitle{
             font-size: 22px;
             font-weight: 700;
-            margin: 30px 0;
-
-            /* border: 1px solid red; */
         }
         .checkList_info{
             font-size: 18px;
             font-weight: 700;
             margin: 30px 0;
-
-            /* border: 1px solid red; */
         }
 
         .checkList_deliverContent, .checkList_payContent{
@@ -126,8 +122,6 @@
 
         .checkList_deliver_cho{
             margin: 20px 0;
-
-            /* border: 1px solid red; */
         }
 
         .checkList_deliver_choName{
@@ -135,7 +129,6 @@
             justify-content: space-between;
             font-size: 18px;
             font-weight: 700;
-            /* border: 1px solid red; */
         }
 
         .checkList_choInfo{
@@ -143,26 +136,37 @@
             margin: 0px 0 0 15px;
             padding: 10px;
             border-radius: 5px;
-            /* border: 1px solid red; */
             display: none;
+            position: relative;
         }
 
         .shopName{
             font-weight: 600;
         }
-        .checkList_dliver_choInfo button{
+        .checkList_btn{
             padding: 3px 10px;
             margin: 10px 0 0 0;
             background-color: #cc543a;
             border:transparent;
             border-radius: 30px;
-        }
-        .checkList_dliver_choInfo button a{
             color: #fff;
+
+            position: relative;
+            z-index: 2;
+        }
+        .checkList_btn:hover{
+            background-color: #dd745e;
+        }
+        button:focus{
+            outline: none;
+        }
+        .checkList_btn a{
+            color: #fff;
+            text-decoration: none;
         }
 
         .checkList_payBox{
-            padding: 0 0 20px 0;
+            padding: 20px 0;
             margin: 20px 0;
             border-top: 1px solid rgba(203, 203, 203, .7);
             border-bottom: 1px solid rgba(203, 203, 203, .7);
@@ -179,6 +183,57 @@
             border: 0px;
             border-bottom: 1px solid #aaa;
         }
+
+        .checkList_totalPriceContainer{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .checkList_totalPricInfoBox{
+            display: flex;
+            justify-content: space-between;
+        }
+        .checkList_totalPricInfo p{
+            font-weight: 700;
+            margin: 5px 20px;
+            /* border: 1px solid red; */
+        }
+        .checkList_finBtn{
+            display: flex;
+            justify-content: flex-end;
+            margin: 30px 20px 40px 0;
+
+            /* border: 1px solid red; */
+        }
+
+
+/* bccImg */
+        .checkList_bccImg{
+            width: 1200px;
+            position: absolute;
+            bottom: 50px;
+            right: 0;
+            opacity: .3;
+        }
+
+        .checkList_bccImg img{
+            width: 100%;
+            /* position: absolute; */
+        }
+
+
+/* footer */
+        footer {
+            width: 100%;
+            height: 70px;
+            background-color: #cc543a;
+            color: white;
+            letter-spacing: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
 /* 麵包屑 */
         .breadcrumb_style_1 {
             padding: 10px 0;
@@ -220,6 +275,92 @@
                 width: 90%;
             }
         }
+/* finishorder */
+        .modal_header_imgBox{
+            display: flex;
+            justify-content: center;
+        }
+        .modal-content-re img{
+            margin: 0 10px 0 0;
+        }
+        .modal-body-re{
+            text-align: center;
+        }
+        .modal-infoContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0 20px 0;
+        }
+        .modal-infoContainer p{
+            font-size: 26px;
+            font-weight: 700;
+        }
+        .btn-primary-re a{
+            text-decoration: none;
+            color: #fff;
+        }
+
+
+    @media ( max-width: 770px ){
+        .checkList_prod_cate{
+            display: none;
+        }
+
+        .checkList_item{
+            justify-content: flex-start;
+        }
+        .checkList_itemImgBox{
+            margin: 0 30px 0 0;
+        }
+        .checkList_itemWordBox{
+            width: auto;
+            display: block;
+        }
+        .checkList_itemWordBox p{
+            width: auto;
+            text-align: left;
+        }
+        .checkList_itemName{
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .checkList_itemNum{
+            margin: 40px 0 0 0;
+        }
+        .checkList_itemNum::before{
+            content: "數量 ";
+        }
+        .checkList_itemTotalP::before{
+            content: "總計 ";
+        }
+
+        .checkList_deliverContent, .checkList_payContent{
+            width: auto;
+        }
+
+        .checkList_totalPriceContainer{
+            display: block;
+        }
+        .checkList_totalPricInfo{
+            margin: 20px 0 0 0;
+        }
+        .checkList_totalPricInfo p{
+            margin: 5px 0;
+        }
+        .checkList_finBtn{
+            margin-right: 0;
+        }
+
+
+
+
+        .checkList_bccImg{
+            display: none;
+        }
+    }
+
+
     </style>
 
 </head>
@@ -469,9 +610,9 @@
                 <div class="checkList_itemWordBox">
                     <p class="checkList_itemName">廟宇明信片</p>
                     <p class="checkList_itemAttr">9張一組</p>
-                    <p class="checkList_itemPrice">NT. 125</p>
+                    <p class="checkList_itemPrice" data-price ="125">NT. 125</p>
                     <p class="checkList_itemNum">1</p>
-                    <p class="checkList_itemTotalP">NT. 125</p>
+                    <p class="checkList_itemTotalP">NT. <span id="checkList_itemTotalP_num"></span></p>
                 </div>
             </div>
             <div class="checkList_item">
@@ -479,11 +620,11 @@
                     <img src="./img/indexproduct(3).jpg" alt="">
                 </div>
                 <div class="checkList_itemWordBox">
-                    <p class="checkList_itemName">廟宇明信片</p>
-                    <p class="checkList_itemAttr">9張一組</p>
-                    <p class="checkList_itemPrice">NT. 125</p>
-                    <p class="checkList_itemNum">1</p>
-                    <p class="checkList_itemTotalP">NT. 125</p>
+                    <p class="checkList_itemName">好運茶</p>
+                    <p class="checkList_itemAttr">12包一盒</p>
+                    <p class="checkList_itemPrice">NT. 500</p>
+                    <p class="checkList_itemNum">2</p>
+                    <p class="checkList_itemTotalP">NT. <span id="checkList_itemTotalP_num"></span></p>
                 </div>
             </div>
         </div>
@@ -501,7 +642,7 @@
 
                     <div class="checkList_dliver_choInfo checkList_choInfo">
                         <div class="checkList_dliver_choInfoDetail">
-                            <label class="shopName"><input type="radio" name="shopAddress" value="某某門市" checked> 某某門市</label>
+                            <label class="shopName"><input type="radio" name="shopAddress" value="某某門市" class="shopAddress_radio"> 某某門市</label>
                             <div class="checkList_dliver_shopAddress">
                                 <p>106台北市大安區復興南路二段203號</p>
                                 <div class="checkList_dliver_shopReceiver">
@@ -510,7 +651,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button><a href="">選擇門市</a></button>
+                        <button class="checkList_btn"><a href="">選擇門市</a></button>
                     </div>
                 </div>
 
@@ -522,7 +663,7 @@
                     
                     <div class="checkList_dliver_choInfo checkList_choInfo">
                         <div class="checkList_dliver_choInfoDetail">
-                            <label class="shopName"><input type="radio" name="shopAddress" value="某某門市"> 某某門市</label>
+                            <label class="shopName"><input type="radio" name="shopAddress" value="某某門市" class="shopAddress_radio"> 某某門市</label>
                             <div class="checkList_dliver_shopAddress">
                                 <p>106台北市大安區復興南路二段203號</p>
                                 <div class="checkList_dliver_shopReceiver">
@@ -531,7 +672,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button><a href="">選擇門市</a></button>
+                        <button class="checkList_btn"><a href="">選擇門市</a></button>
                     </div>
                 </div>
 
@@ -543,7 +684,7 @@
                     
                     <div class="checkList_dliver_choInfo checkList_choInfo">
                         <div class="checkList_dliver_choInfoDetail">
-                            <label class="shopName"><input type="radio" name="shopAddress" value="某某門市"> 某某門市</label>
+                            <label class="shopName"><input type="radio" name="shopAddress" value="某某門市" class="shopAddress_radio"> 某某門市</label>
                             <div class="checkList_dliver_shopAddress">
                                 <p>106台北市大安區復興南路二段203號</p>
                                 <div class="checkList_dliver_shopReceiver">
@@ -552,7 +693,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button><a href="">選擇門市</a></button>
+                        <button class="checkList_btn"><a href="">選擇門市</a></button>
                     </div>
                 </div>
 
@@ -586,29 +727,93 @@
                     <label class="checkList_payMethod"><input type="radio" name="pay" value="credit"> 信用卡 / 金融卡</label>
                     
                     <div class="checkList_pay_choInfo checkList_choInfo">
+                    <form>
                         <label>請輸入卡號: 
-                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4">-
-                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4">-
-                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4">-
-                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4">
+                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4" oninput="value=value.replace(/[^\d]/g,'')">-
+                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4" oninput="value=value.replace(/[^\d]/g,'')">-
+                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4" oninput="value=value.replace(/[^\d]/g,'')">-
+                            <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4" oninput="value=value.replace(/[^\d]/g,'')">
                         </label>
                         <br/>
                         <label>安全碼: 
-                            <input class="cardSafeNum" type="text" name="cardSafeNum" maxlength="3" size="3">
+                            <input class="cardSafeNum" type="text" name="cardSafeNum" maxlength="3" size="3" oninput="value=value.replace(/[^\d]/g,'')">
                         </label>
                         <br/>
                         <label>到期日: 
-                            <input class="cardDate" type="text" name="cardDate" maxlength="2" size="2"> / 
-                            <input class="cardDate" type="text" name="cardDate" maxlength="2" size="2">
+                            <input class="cardDate" type="text" name="cardDate" maxlength="2" size="2" oninput="value=value.replace(/[^\d]/g,'')"> / 
+                            <input class="cardDate" type="text" name="cardDate" maxlength="2" size="2" oninput="value=value.replace(/[^\d]/g,'')">
                         </label>
+                    </form>
                     </div>
                 </div>
             </div>
 
         </div>
 
+        <div class="checkList_totalPriceContainer">
+            <div class="checkList_subTitle">訂單金額</div>
+            <div class="checkList_totalPricInfo">
+                <div class="checkList_totalPricInfoBox">
+                    <p>商品金額</p>
+                    <p>NT. 1125</p>
+                </div>
 
+                <div class="checkList_totalPricInfoBox">
+                    <p>運費金額</p>
+                    <p>NT. 60</p>
+                </div>
+
+                <div class="checkList_totalPricInfoBox">
+                    <p>訂單總金額</p>
+                    <p>NT. 1185</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkList_finBtn">
+            <button class="checkList_btn" data-toggle="modal" data-target="#finishOrder" id="orderbtn">確認下訂</button>
+        </div>
+        
     </div>
+
+    <!-- finishOrder -->
+    <div class="modal fade" id="finishOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <div class="modal_header_imgBox">
+                        <img src="./img/finishOrder.svg" alt="">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">已完成訂單</h5>
+                    </div>
+                </div>
+                <div class="modal-body modal-body-re">
+                    <div class="modal-infoContainer">
+                        <img src="./img/checkList_smileFace.svg" alt="">
+                        <p>感謝您的支持</p>
+                    </div>
+                    <div class="modal-orderNum">
+                        <span>訂單編號:</span>
+                        <span>TC0033333333333301</span>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn-primary-re"><a href="index.html"
+                    >回到首頁</a></button>
+                    <button type="button" class="btn-primary-re"><a href="">查看訂單</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkList_bccImg">
+        <img src="./img/checkList_bccImg.png" alt="">
+    </div>
+
+
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
     
 
 
@@ -663,14 +868,55 @@
 
     //選擇商店
         $('.checkList_shopChoName').click(function(){
-            $(this).parent().parent().find('.checkList_dliver_choInfo').css('display','block');
-            $(this).parent().parent().siblings().find('.checkList_dliver_choInfo').css('display','none')
+            $(this).parent().siblings().slideDown('slow');
+            $(this).parent().parent().siblings().find('.checkList_dliver_choInfo').slideUp('slow');
+
+
+        });
+
+    //選擇付款
+        $('.checkList_payMethod').click(function(){
+            $(this).siblings().slideDown('slow');
+            $(this).parent().siblings().find('.checkList_pay_choInfo').slideUp('slow');
+        });
+
+    //radio相連
+         $('.checkList_shopChoName').click(function(){
+
+            if($('input[name="deliver"]').checked = true){
+
+
+            $(this).parent().siblings().find('.shopAddress_radio').attr('checked',true);
+            }
         })
 
-        $('.checkList_payMethod').click(function(){
-            $(this).parent().find('.checkList_pay_choInfo').css('display','block');
-            $(this).parent().siblings().find('.checkList_pay_choInfo').css('display','none')
+    //選信用卡付款，必填資訊
+        $('input[value="credit"]').change(function(){
+            if($(this).is('checked')){
+                $('.cardNum').attr('required')
+            }else{
+                $('.cardNum').removeAttr('required')
+            }
         })
+
+    //信用卡數字限制
+    // re = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+    // if (!re.test(formValue.value))
+    //     alert(`請輸入數字`);
+
+    //計算
+    $(document).ready(function(){
+        var itemNum = +$(this).find('.checkList_itemNum').html();
+        // console.log('num',itemNum)
+
+        var itemPrice = +$(this).find('.checkList_itemPrice').data('price')
+        // console.log('p',itemPrice)
+
+        $('#checkList_itemTotalP_num').text(itemNum*itemPrice)
+        // console.log('totoP',itemNum*itemPrice)
+    })
+    
+        
 </script>
 
     
