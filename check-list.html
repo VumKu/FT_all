@@ -635,18 +635,6 @@
         </div>
     </div>
 
-    <!-- 我是麵包屑-->
-    <div class="breadcrumb_style   backgroundimg_1">
-        <div class="d-flex flex-wrap breadcrumb_style_1 ">
-            <a href="" class="astlyep">首頁</a>
-            <!-- 共用雲端找箭頭icon-->
-            <img src="./img/nav_arrow_right.svg">
-            <a href="./news_mainPage.html" class="astlyep">最新消息</a>
-            <img src="./img/nav_arrow_right.svg">
-            <a href="" class="astlyep">2021廟宇國際觀光文化節 攝影比賽</a>
-        </div>
-    </div>
-
     <div class="checkListContainer">
         <div class="checkList_title">結帳</div>
 
@@ -768,10 +756,12 @@
                     </div>
 
                     <div class="checkList_dliver_choInfo checkList_choInfo">
-                        <input type="text" name="name" placeholder="地址" size="30">
-                        <br>
-                        <input type="text" name="phone" placeholder="收件人">
-                        <input type="text" name="address" placeholder="聯絡電話">
+                        <form>
+                            <input type="text" name="name" placeholder="地址" size="30">
+                            <br>
+                            <input type="text" name="phone" placeholder="收件人">
+                            <input type="text" name="address" placeholder="聯絡電話">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -792,7 +782,7 @@
                     <label class="checkList_payMethod"><input type="radio" name="pay" value="credit"> 信用卡 / 金融卡</label>
 
                     <div class="checkList_pay_choInfo checkList_choInfo">
-                        <form>
+                        <form class="creditForm" required>
                             <label>請輸入卡號:
                                 <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4"
                                     oninput="value=value.replace(/[^\d]/g,'')">-
@@ -847,7 +837,8 @@
         </div>
 
         <div class="checkList_finBtn">
-            <button class="checkList_btn" data-toggle="modal" data-target="#finishOrder" id="orderbtn">確認下訂</button>
+            <button class="checkList_btn" data-target="#finishOrder" id="orderbtn"
+                onclick="requireData();">確認下訂</button>
         </div>
 
     </div>
@@ -965,7 +956,7 @@
             }
         })
 
-        //選信用卡付款，必填資訊
+        // 選信用卡付款，必填資訊
         $('input[value="credit"]').change(function () {
             if ($(this).is('checked')) {
                 $('.cardNum').attr('required')
@@ -994,7 +985,28 @@
             console.log('totoP', itemNum * itemPrice)
         })
 
+        //check判斷
 
+        // $('#orderbtn').click(function () {
+        //     var x = $(".cardNum").val()
+
+        //     console.log('x', x)
+
+        //     if (x == "") {
+        //         alert("Name must be filled out");
+        //         return false;
+        //     }
+        // });
+
+
+        function requireData() {
+            console.log('Annie', document.querySelectorAll('.cardNum').required)
+            if (document.querySelectorAll('.cardNum').required != true) {
+                alert('write!')
+            } else {
+                $('#orderbtn').attr('data-toggle', 'modal')
+            }
+        }
     </script>
 
 
