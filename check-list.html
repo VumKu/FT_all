@@ -774,24 +774,20 @@
 
             <div class="checkList_payContent">
                 <div class="checkList_pay_cho">
-                    <label class="checkList_payMethod"><input type="radio" name="pay" value="credit" checked>
+                    <label class="checkList_payMethod"><input type="radio" name="pay" value="bysent" checked>
                         貨到付款</label>
                 </div>
 
                 <div class="checkList_pay_cho">
-                    <label class="checkList_payMethod"><input type="radio" name="pay" value="credit"> 信用卡 / 金融卡</label>
+                    <label class="checkList_payMethod"><input type="radio" name="pay" value="bycredit" id="creditRadio"> 信用卡 / 金融卡</label>
 
                     <div class="checkList_pay_choInfo checkList_choInfo">
-                        <form class="creditForm" required>
+                        <form class="creditForm">
                             <label>請輸入卡號:
-                                <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4"
-                                    oninput="value=value.replace(/[^\d]/g,'')">-
-                                <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4"
-                                    oninput="value=value.replace(/[^\d]/g,'')">-
-                                <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4"
-                                    oninput="value=value.replace(/[^\d]/g,'')">-
-                                <input class="cardNum" type="text" name="cardnum" maxlength="4" size="4"
-                                    oninput="value=value.replace(/[^\d]/g,'')">
+                                <input class="cardNum" type="text" name="cardnum-p1" maxlength="4" size="4" oninput="value=value.replace(/[^\d{4}]/g,'')">-
+                                <input class="cardNum" type="text" name="cardnum-p2" maxlength="4" size="4" oninput="value=value.replace(/[^\d{4}]/g,'')">-
+                                <input class="cardNum" type="text" name="cardnum-p3" maxlength="4" size="4" oninput="value=value.replace(/[^\d{4}]/g,'')">-
+                                <input class="cardNum" type="text" name="cardnum-p4" maxlength="4" size="4" oninput="value=value.replace(/[^\d{4}]/g,'')">
                             </label>
                             <br />
                             <label>持卡人姓名:
@@ -837,8 +833,7 @@
         </div>
 
         <div class="checkList_finBtn">
-            <button class="checkList_btn" data-target="#finishOrder" id="orderbtn"
-                onclick="requireData();">確認下訂</button>
+            <button class="checkList_btn" data-target="#finishOrder" id="orderbtn" onclick="requireData()">確認下訂</button>
         </div>
 
     </div>
@@ -957,13 +952,24 @@
         })
 
         // 選信用卡付款，必填資訊
-        $('input[value="credit"]').change(function () {
-            if ($(this).is('checked')) {
-                $('.cardNum').attr('required')
-            } else {
-                $('.cardNum').removeAttr('required')
-            }
-        })
+        // $('input[value="credit"]').change(function () {
+        //     if ($(this).is('checked')) {
+        //         $('.cardNum').attr('required')
+        //     } else {
+        //         $('.cardNum').removeAttr('required')
+        //     }
+        // })
+
+            // let Cradio = document.getElementById('red')
+            // if (Cradio.checked == true){
+            //     console.log('cradio', 'checked')
+            //     // $('.cardNum').attr('required')
+            // } else {
+            //     console.log('cradio', 'no checked')
+            //     // $('.cardNum').removeAttr('required')
+            // };
+            
+
 
         //選宅配時，必填資訊
 
@@ -985,30 +991,99 @@
             console.log('totoP', itemNum * itemPrice)
         })
 
+
+
+
+
+
+        $("input.cardNum").on("keydown", function(e){
+            if((e.which >= 48 && e.which <= 57) || e.which == 8){
+            
+            //console.log(e.target.value.length);
+            if(e.target.value.length == 0 && e.which == 8){
+                $(this).prev().focus();
+            }
+            }else{
+            e.preventDefault();
+            }
+        });
+
+        $("input.cardNum").on("keyup", function(e){
+        
+        // \D 代表非數字字元，g 代表全域尋找
+        let str = (e.target.value).replace(/\D/g, "");
+        
+        $(this).val(str);
+        //console.log(str.length);
+        if(str.length == 4){
+            $(this).next().focus();
+        }
+        });
+
         //check判斷
 
-        // $('#orderbtn').click(function () {
-        //     var x = $(".cardNum").val()
+        function requireData() {    
 
-        //     console.log('x', x)
+            let creditRadio = document.getElementById('creditRadio');
 
-        //     if (x == "") {
-        //         alert("Name must be filled out");
-        //         return false;
-        //     }
-        // });
+            if (creditRadio.checked == true){
 
+                console.log('cradio', 'checked');
 
-        function requireData() {
-            console.log('Annie', document.querySelectorAll('.cardNum').required)
-            if (document.querySelectorAll('.cardNum').required != true) {
-                alert('write!')
+            // 判斷卡號是否格式正確
+            var a = $("input[name='cardnum-p1']").val()
+            var b = $("input[name='cardnum-p2']").val()
+            var c = $("input[name='cardnum-p3']").val()
+            var d = $("input[name='cardnum-p4']").val()
+
+                if (a == "" || a.length < 4) {
+                    alert("卡號格式錯誤");
+                    return false;
+                }if(b == "" || b.length < 4) {
+                    alert("卡號格式錯誤");
+                    return false;
+                }if(c == "" || c.length < 4) {
+                    alert("卡號格式錯誤");
+                    return false;
+                }if(d == "" || d.length < 4) {
+                    alert("卡號格式錯誤");
+                    return false;
+                }
+                else{
+                    $('#orderbtn').attr('data-toggle', 'modal')
+                }
+            
+            // 判斷持卡人是否填寫
+            var creditName =  $("input[name='cardName']").val()
+                
+                if(creditName == "") {
+                    alert("請輸入持卡人姓名");
+                    return false;
+                }
+            
+            // 判斷安全碼是否填寫 & 正確
+            var cardSafeNum =  $("input[name='cardSafeNum']").val()
+                
+                if(cardSafeNum == "" || cardSafeNum.length < 3) {
+                    alert("請輸入正確的安全碼");
+                    return false;
+                }
+
             } else {
-                $('#orderbtn').attr('data-toggle', 'modal')
-            }
-        }
-    </script>
+                console.log('cradio', 'no checked');
+                // $('#orderbtn').attr('data-toggle', 'modal')
 
+            };
+
+            
+
+        }
+
+
+
+
+
+    </script>
 
 </body>
 
